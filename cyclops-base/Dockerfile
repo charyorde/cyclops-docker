@@ -18,8 +18,18 @@
 #
 # Thanks to: https://hub.docker.com/_/java/
 
-FROM java:8
+FROM ubuntu:14.04
 EXPOSE 4567 4568 4569 4570 4571 4572
 
 RUN apt-get update
-RUN apt-get install -y maven git
+RUN apt-get install -y maven git nano
+
+RUN \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer && \
+  rm -rf /var/lib/apt/lists/* && \
+  rm -rf /var/cache/oracle-jdk8-installer
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
