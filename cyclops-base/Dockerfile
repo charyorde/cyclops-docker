@@ -21,7 +21,7 @@
 FROM ubuntu:14.04
 EXPOSE 4567 4568 4569 4570 4571 4572
 
-RUN apt-get update
+RUN apt-get update & add-apt-repository -y ppa:webupd8team/java && apt-get -y update
 RUN apt-get install -y maven git nano
 
 RUN \
