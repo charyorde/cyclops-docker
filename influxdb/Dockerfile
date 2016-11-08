@@ -24,7 +24,7 @@ RUN apt-get update
 RUN apt-get install -y wget
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_1.0.2_amd64.deb
 RUN dpkg -i influxdb_1.0.2_amd64.deb
-RUN /etc/init.d/influxdb restart
+#RUN /etc/init.d/influxdb restart
 
 ADD run.sh /opt/start-influx.sh
 RUN chmod +x /opt/start-influx.sh
